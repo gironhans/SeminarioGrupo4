@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:s="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <style type="text/css">
+           body{
+                font-family: Verdana;       
+                padding: 10% 25% 10% 25%;
+                border: thin activeborder;    
+                font-family:Arial, sans-serif;
+                color:black;
+                font-size:15px;
+                line-height:14px;
+                padding-bottom:70px; 
+           }
+        </style>
+        <title>Seminario Grupo 4</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <center>
+                <p:messages autoUpdate="true" showDetail="true"/>
+                <p:panel header="Login" style="width:300px; text-align:center; ">
+                <p:outputLabel value="Ingrese Usuario:     "/>  
+                <p:inputText id="txtUser"/><br/><br/>
+                <p:outputLabel value="Ingrese Contraseña:  "/>  
+                <p:password id="txPass"/><br/><br/>
+                <p:commandButton id="cmdAceptar" value="Ingresar" icon="ui-icon-key" action="Menu.xhtml"/>
+            </p:panel>
+            </center>
+        </h:form>
+    </h:body>
+</html>
+
