@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="./../template/plantilla.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListTblCentroEducativoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="content">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListTblCentroEducativoEmpty}" rendered="#{tblCentroEducativoController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{tblCentroEducativoController.items.rowCount > 0}">
+                    <h:outputText value="#{tblCentroEducativoController.pagination.pageFirstItem + 1}..#{tblCentroEducativoController.pagination.pageLastItem + 1}/#{tblCentroEducativoController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{tblCentroEducativoController.previous}" value="#{bundle.Previous} #{tblCentroEducativoController.pagination.pageSize}" rendered="#{tblCentroEducativoController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{tblCentroEducativoController.next}" value="#{bundle.Next} #{tblCentroEducativoController.pagination.pageSize}" rendered="#{tblCentroEducativoController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{tblCentroEducativoController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTblCentroEducativoTitle_centroEducativo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.centroEducativo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTblCentroEducativoTitle_codigoDepartamental}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoDepartamental}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTblCentroEducativoTitle_nombre}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombre}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTblCentroEducativoTitle_direccion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.direccion}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTblCentroEducativoTitle_telefono}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.telefono}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTblCentroEducativoTitle_correo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.correo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTblCentroEducativoTitle_administradorEscuela}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.administradorEscuela}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTblCentroEducativoTitle_cargo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cargo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{tblCentroEducativoController.prepareView}" value="#{bundle.ListTblCentroEducativoViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{tblCentroEducativoController.prepareEdit}" value="#{bundle.ListTblCentroEducativoEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{tblCentroEducativoController.destroy}" value="#{bundle.ListTblCentroEducativoDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{tblCentroEducativoController.prepareCreate}" value="#{bundle.ListTblCentroEducativoCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListTblCentroEducativoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="./../template/plantilla.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListTblProfesorTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="content">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListTblProfesorEmpty}" rendered="#{tblProfesorController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{tblProfesorController.items.rowCount > 0}">
+                    <h:outputText value="#{tblProfesorController.pagination.pageFirstItem + 1}..#{tblProfesorController.pagination.pageLastItem + 1}/#{tblProfesorController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{tblProfesorController.previous}" value="#{bundle.Previous} #{tblProfesorController.pagination.pageSize}" rendered="#{tblProfesorController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{tblProfesorController.next}" value="#{bundle.Next} #{tblProfesorController.pagination.pageSize}" rendered="#{tblProfesorController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{tblProfesorController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTblProfesorTitle_profesor}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.profesor}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTblProfesorTitle_nombre}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombre}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTblProfesorTitle_apellido}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.apellido}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTblProfesorTitle_fechaNacimiento}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaNacimiento}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTblProfesorTitle_docIdentificacion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.docIdentificacion}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTblProfesorTitle_telefono}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.telefono}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTblProfesorTitle_correo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.correo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTblProfesorTitle_areaDocensia}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.areaDocensia}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTblProfesorTitle_idEstado}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idEstado}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{tblProfesorController.prepareView}" value="#{bundle.ListTblProfesorViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{tblProfesorController.prepareEdit}" value="#{bundle.ListTblProfesorEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{tblProfesorController.destroy}" value="#{bundle.ListTblProfesorDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{tblProfesorController.prepareCreate}" value="#{bundle.ListTblProfesorCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListTblProfesorIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

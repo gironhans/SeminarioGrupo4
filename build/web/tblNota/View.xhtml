@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewTblNotaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="content">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewTblNotaLabel_nota}"/>
+                    <h:outputText value="#{tblNotaController.selected.nota}" title="#{bundle.ViewTblNotaTitle_nota}"/>
+                    <h:outputText value="#{bundle.ViewTblNotaLabel_observacion}"/>
+                    <h:outputText value="#{tblNotaController.selected.observacion}" title="#{bundle.ViewTblNotaTitle_observacion}"/>
+                    <h:outputText value="#{bundle.ViewTblNotaLabel_idYyyy}"/>
+                    <h:outputText value="#{tblNotaController.selected.idYyyy}" title="#{bundle.ViewTblNotaTitle_idYyyy}"/>
+                    <h:outputText value="#{bundle.ViewTblNotaLabel_idAlumno}"/>
+                    <h:outputText value="#{tblNotaController.selected.idAlumno}" title="#{bundle.ViewTblNotaTitle_idAlumno}"/>
+                    <h:outputText value="#{bundle.ViewTblNotaLabel_idTarea}"/>
+                    <h:outputText value="#{tblNotaController.selected.idTarea}" title="#{bundle.ViewTblNotaTitle_idTarea}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{tblNotaController.destroyAndView}" value="#{bundle.ViewTblNotaDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewTblNotaEditLink}"/>
+                <br />
+                <h:commandLink action="#{tblNotaController.prepareCreate}" value="#{bundle.ViewTblNotaCreateLink}" />
+                <br />
+                <h:commandLink action="#{tblNotaController.prepareList}" value="#{bundle.ViewTblNotaShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewTblNotaIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

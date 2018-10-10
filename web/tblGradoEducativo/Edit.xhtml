@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="./../template/plantilla.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditTblGradoEducativoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="content">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditTblGradoEducativoLabel_gradoEducativo}" for="gradoEducativo" />
+                    <h:inputText id="gradoEducativo" value="#{tblGradoEducativoController.selected.gradoEducativo}" title="#{bundle.EditTblGradoEducativoTitle_gradoEducativo}" required="true" requiredMessage="#{bundle.EditTblGradoEducativoRequiredMessage_gradoEducativo}"/>
+                    <h:outputLabel value="#{bundle.EditTblGradoEducativoLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{tblGradoEducativoController.selected.nombre}" title="#{bundle.EditTblGradoEducativoTitle_nombre}" />
+                    <h:outputLabel value="#{bundle.EditTblGradoEducativoLabel_descripcion}" for="descripcion" />
+                    <h:inputText id="descripcion" value="#{tblGradoEducativoController.selected.descripcion}" title="#{bundle.EditTblGradoEducativoTitle_descripcion}" />
+                    <h:outputLabel value="#{bundle.EditTblGradoEducativoLabel_idNivelEducativo}" for="idNivelEducativo" />
+                    <h:selectOneMenu id="idNivelEducativo" value="#{tblGradoEducativoController.selected.idNivelEducativo}" title="#{bundle.EditTblGradoEducativoTitle_idNivelEducativo}" >
+                        <f:selectItems value="#{tblNivelEducativoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{tblGradoEducativoController.update}" value="#{bundle.EditTblGradoEducativoSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditTblGradoEducativoViewLink}"/>
+                <br />
+                <h:commandLink action="#{tblGradoEducativoController.prepareList}" value="#{bundle.EditTblGradoEducativoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditTblGradoEducativoIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

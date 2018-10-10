@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="/css/default.css"/>
+        <h:outputStylesheet name="/css/cssLayout.css"/>
+        <h:outputScript name="/js/jquery-3.3.1.slim.min.js" />
+        <h:outputStylesheet name="/css/bootstrap.min.css"/>
+        <h:outputScript name="/js/bootstrap.min.js" />
+        <link rel="shortcut icon" type="image/x-icon" href="#{resource['images/favicon.ico']}"/>
+        <title>AJUSTAR</title>
+    </h:head>
+
+    <h:body>
+
+        <div id="top">
+            <ui:insert name="top"></ui:insert>
+            
+            <div name="menuBar">
+                <h:form>  
+    <p:growl id="messages"/>
+ 
+    <p:menubar>
+      <p:submenu label="Centro Educativo" icon="ui-icon-contact">
+                <p:menuitem value="Centros" outcome="/tblCentroEducativo/List"  icon="ui-icon-document"/>
+                <p:menuitem value="Detalle" outcome="/tblCentroEducativo/View"  icon="ui-icon-document"/>
+                <p:menuitem value="Crear" outcome="/tblCentroEducativo/Create" icon="ui-icon-document"/>
+    </p:submenu>
+      <p:submenu label="UNIDAD" icon="ui-icon-contact">
+                <p:menuitem value="Ver Unidades" outcome="/tblUnidad/List" icon="ui-icon-document"/>
+                <p:menuitem value="Crear" outcome="/tblUnidad/Create" icon="ui-icon-document"/>
+    </p:submenu>
+    <p:submenu label="ALUMNO" icon="ui-icon-contact">
+                <p:menuitem value="Ver Alumnos" outcome="/tblAlumno/List" icon="ui-icon-document"/>
+                <p:menuitem value="Crear" outcome="/tblAlumno/Create" icon="ui-icon-document"/>
+    </p:submenu>
+    <p:submenu label="GRADOS" icon="ui-icon-contact">
+                <p:menuitem value="Ver Grados" outcome="/tblGradoEducativo/List" icon="ui-icon-document"/>
+                <p:menuitem value="Crear" outcome="/tblGradoEducativo/Create" icon="ui-icon-document"/>
+    </p:submenu>
+    <p:submenu label="MATERIA" icon="ui-icon-contact">
+                <p:menuitem value="Ver Materias" outcome="/tblMateria/List" icon="ui-icon-document"/>
+                <p:menuitem value="Crear" outcome="/tblMateria/Create" icon="ui-icon-document"/>
+    </p:submenu>
+    <p:submenu label="NIVEL EDUCATIVO" icon="ui-icon-contact">
+                <p:menuitem value="Ver Niveles Educativos" outcome="/tblNivelEducativo/List" icon="ui-icon-document"/>
+                <p:menuitem value="Crear" outcome="/tblNivelEducativo/Create" icon="ui-icon-document"/>
+    </p:submenu>
+    <p:submenu label="SECCION" icon="ui-icon-contact">
+                <p:menuitem value="VER SECCIONES" outcome="/tblSeccion/List" icon="ui-icon-document"/>
+                <p:menuitem value="CREAR" outcome="/tblSeccion/Create" icon="ui-icon-document"/>
+    </p:submenu>
+    <p:submenu label="ESTADO" icon="ui-icon-contact">
+                <p:menuitem value="VER ESTADOS" outcome="/tblEstado/List" icon="ui-icon-document"/>
+                <p:menuitem value="CREAR " outcome="/tblEstado/Create" icon="ui-icon-document"/>
+    </p:submenu>
+    <p:submenu label="PROFESOR" icon="ui-icon-contact">
+                <p:menuitem value="VER PROFESORES" outcome="/tblProfesor/List" icon="ui-icon-document"/>
+                <p:menuitem value="CREAR " outcome="/tblProfesor/Create" icon="ui-icon-document"/>
+    </p:submenu> 
+      <p:submenu label="Asignar Cursos" icon="ui-icon-contact">
+        <p:submenu label="PROFESOR" icon="ui-icon-contact">
+                <p:menuitem value="VER PROFESORES" outcome="/tblProfesorAsignacion/List" icon="ui-icon-document"/>
+                <p:menuitem value="CREAR" outcome="/tblProfesorAsignacion/Create" icon="ui-icon-document"/>
+        </p:submenu>
+        <p:submenu label="ALUMNO" icon="ui-icon-contact">
+                <p:menuitem value="VER UNIDADES" outcome="/tblAlumnoAsignacion/List" icon="ui-icon-document"/>
+                <p:menuitem value="CREAR" outcome="/tblAlumnoAsignacion/Create" icon="ui-icon-document"/>
+        </p:submenu>
+    </p:submenu>
+    <p:submenu label="TAREA" icon="ui-icon-contact">
+                <p:menuitem value="VER TAREAS" outcome="/tblTareaTipo/List" icon="ui-icon-document"/>
+                <p:menuitem value="CREAR " outcome="/tblTareaTipo/Create" icon="ui-icon-document"/>
+    </p:submenu> 
+    </p:menubar>
+</h:form>
+                </div>
+           
+        </div>
+        <div>
+            <div style="height: 550px;" id="left">
+                <ui:insert name="left">PANEL</ui:insert>
+                
+            </div>
+            <div style="height: 550px;" id="content" class="left_content">
+                <ui:insert name="content">Content</ui:insert>
+            </div>
+        </div>
+       <div id="bottom">
+            <ui:insert name="bottom"></ui:insert>
+            
+            
+                        
+            <div name="footer">
+                <h:form>  
+                    <p:growl id="messages"/>
+                        USUARIO
+                    <!--<p:menubar>
+                        <p:menuitem value="USUARIO" url="#" icon="ui-icon-arrowreturnthick-1-w" />
+                    </p:menubar>-->
+                </h:form>
+            </div>
+            
+        </div>
+
+    </h:body>
+
+</html>

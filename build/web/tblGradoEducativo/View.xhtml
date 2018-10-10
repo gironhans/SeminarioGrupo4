@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="./../template/plantilla.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewTblGradoEducativoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="content">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewTblGradoEducativoLabel_gradoEducativo}"/>
+                    <h:outputText value="#{tblGradoEducativoController.selected.gradoEducativo}" title="#{bundle.ViewTblGradoEducativoTitle_gradoEducativo}"/>
+                    <h:outputText value="#{bundle.ViewTblGradoEducativoLabel_nombre}"/>
+                    <h:outputText value="#{tblGradoEducativoController.selected.nombre}" title="#{bundle.ViewTblGradoEducativoTitle_nombre}"/>
+                    <h:outputText value="#{bundle.ViewTblGradoEducativoLabel_descripcion}"/>
+                    <h:outputText value="#{tblGradoEducativoController.selected.descripcion}" title="#{bundle.ViewTblGradoEducativoTitle_descripcion}"/>
+                    <h:outputText value="#{bundle.ViewTblGradoEducativoLabel_idNivelEducativo}"/>
+                    <h:outputText value="#{tblGradoEducativoController.selected.idNivelEducativo}" title="#{bundle.ViewTblGradoEducativoTitle_idNivelEducativo}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{tblGradoEducativoController.destroyAndView}" value="#{bundle.ViewTblGradoEducativoDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewTblGradoEducativoEditLink}"/>
+                <br />
+                <h:commandLink action="#{tblGradoEducativoController.prepareCreate}" value="#{bundle.ViewTblGradoEducativoCreateLink}" />
+                <br />
+                <h:commandLink action="#{tblGradoEducativoController.prepareList}" value="#{bundle.ViewTblGradoEducativoShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewTblGradoEducativoIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

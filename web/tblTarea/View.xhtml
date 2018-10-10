@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewTblTareaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="content">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewTblTareaLabel_tarea}"/>
+                    <h:outputText value="#{tblTareaController.selected.tarea}" title="#{bundle.ViewTblTareaTitle_tarea}"/>
+                    <h:outputText value="#{bundle.ViewTblTareaLabel_observacion}"/>
+                    <h:outputText value="#{tblTareaController.selected.observacion}" title="#{bundle.ViewTblTareaTitle_observacion}"/>
+                    <h:outputText value="#{bundle.ViewTblTareaLabel_idGradoEducativo}"/>
+                    <h:outputText value="#{tblTareaController.selected.idGradoEducativo}" title="#{bundle.ViewTblTareaTitle_idGradoEducativo}"/>
+                    <h:outputText value="#{bundle.ViewTblTareaLabel_idMateria}"/>
+                    <h:outputText value="#{tblTareaController.selected.idMateria}" title="#{bundle.ViewTblTareaTitle_idMateria}"/>
+                    <h:outputText value="#{bundle.ViewTblTareaLabel_idSeccion}"/>
+                    <h:outputText value="#{tblTareaController.selected.idSeccion}" title="#{bundle.ViewTblTareaTitle_idSeccion}"/>
+                    <h:outputText value="#{bundle.ViewTblTareaLabel_idTipoTarea}"/>
+                    <h:outputText value="#{tblTareaController.selected.idTipoTarea}" title="#{bundle.ViewTblTareaTitle_idTipoTarea}"/>
+                    <h:outputText value="#{bundle.ViewTblTareaLabel_idUnidad}"/>
+                    <h:outputText value="#{tblTareaController.selected.idUnidad}" title="#{bundle.ViewTblTareaTitle_idUnidad}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{tblTareaController.destroyAndView}" value="#{bundle.ViewTblTareaDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewTblTareaEditLink}"/>
+                <br />
+                <h:commandLink action="#{tblTareaController.prepareCreate}" value="#{bundle.ViewTblTareaCreateLink}" />
+                <br />
+                <h:commandLink action="#{tblTareaController.prepareList}" value="#{bundle.ViewTblTareaShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewTblTareaIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

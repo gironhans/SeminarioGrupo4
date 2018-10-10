@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="./../template/plantilla.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditTblProfesorAsignacionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="content">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditTblProfesorAsignacionLabel_idPAsignacion}" for="idPAsignacion" />
+                    <h:inputText id="idPAsignacion" value="#{tblProfesorAsignacionController.selected.idPAsignacion}" title="#{bundle.EditTblProfesorAsignacionTitle_idPAsignacion}" required="true" requiredMessage="#{bundle.EditTblProfesorAsignacionRequiredMessage_idPAsignacion}"/>
+                    <h:outputLabel value="#{bundle.EditTblProfesorAsignacionLabel_idGrado}" for="idGrado" />
+                    <h:selectOneMenu id="idGrado" value="#{tblProfesorAsignacionController.selected.idGrado}" title="#{bundle.EditTblProfesorAsignacionTitle_idGrado}" >
+                        <f:selectItems value="#{tblGradoEducativoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditTblProfesorAsignacionLabel_idMateria}" for="idMateria" />
+                    <h:selectOneMenu id="idMateria" value="#{tblProfesorAsignacionController.selected.idMateria}" title="#{bundle.EditTblProfesorAsignacionTitle_idMateria}" >
+                        <f:selectItems value="#{tblMateriaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditTblProfesorAsignacionLabel_idProfesor}" for="idProfesor" />
+                    <h:selectOneMenu id="idProfesor" value="#{tblProfesorAsignacionController.selected.idProfesor}" title="#{bundle.EditTblProfesorAsignacionTitle_idProfesor}" >
+                        <f:selectItems value="#{tblProfesorController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditTblProfesorAsignacionLabel_idSeccion}" for="idSeccion" />
+                    <h:selectOneMenu id="idSeccion" value="#{tblProfesorAsignacionController.selected.idSeccion}" title="#{bundle.EditTblProfesorAsignacionTitle_idSeccion}" >
+                        <f:selectItems value="#{tblSeccionController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{tblProfesorAsignacionController.update}" value="#{bundle.EditTblProfesorAsignacionSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditTblProfesorAsignacionViewLink}"/>
+                <br />
+                <h:commandLink action="#{tblProfesorAsignacionController.prepareList}" value="#{bundle.EditTblProfesorAsignacionShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditTblProfesorAsignacionIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

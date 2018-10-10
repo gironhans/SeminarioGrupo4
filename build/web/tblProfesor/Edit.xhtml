@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="./../template/plantilla.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditTblProfesorTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="content">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditTblProfesorLabel_profesor}" for="profesor" />
+                    <h:inputText id="profesor" value="#{tblProfesorController.selected.profesor}" title="#{bundle.EditTblProfesorTitle_profesor}" required="true" requiredMessage="#{bundle.EditTblProfesorRequiredMessage_profesor}"/>
+                    <h:outputLabel value="#{bundle.EditTblProfesorLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{tblProfesorController.selected.nombre}" title="#{bundle.EditTblProfesorTitle_nombre}" />
+                    <h:outputLabel value="#{bundle.EditTblProfesorLabel_apellido}" for="apellido" />
+                    <h:inputText id="apellido" value="#{tblProfesorController.selected.apellido}" title="#{bundle.EditTblProfesorTitle_apellido}" />
+                    <h:outputLabel value="#{bundle.EditTblProfesorLabel_fechaNacimiento}" for="fechaNacimiento" />
+                    <h:inputText id="fechaNacimiento" value="#{tblProfesorController.selected.fechaNacimiento}" title="#{bundle.EditTblProfesorTitle_fechaNacimiento}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditTblProfesorLabel_docIdentificacion}" for="docIdentificacion" />
+                    <h:inputText id="docIdentificacion" value="#{tblProfesorController.selected.docIdentificacion}" title="#{bundle.EditTblProfesorTitle_docIdentificacion}" />
+                    <h:outputLabel value="#{bundle.EditTblProfesorLabel_telefono}" for="telefono" />
+                    <h:inputText id="telefono" value="#{tblProfesorController.selected.telefono}" title="#{bundle.EditTblProfesorTitle_telefono}" />
+                    <h:outputLabel value="#{bundle.EditTblProfesorLabel_correo}" for="correo" />
+                    <h:inputText id="correo" value="#{tblProfesorController.selected.correo}" title="#{bundle.EditTblProfesorTitle_correo}" />
+                    <h:outputLabel value="#{bundle.EditTblProfesorLabel_areaDocensia}" for="areaDocensia" />
+                    <h:inputText id="areaDocensia" value="#{tblProfesorController.selected.areaDocensia}" title="#{bundle.EditTblProfesorTitle_areaDocensia}" />
+                    <h:outputLabel value="#{bundle.EditTblProfesorLabel_idEstado}" for="idEstado" />
+                    <h:selectOneMenu id="idEstado" value="#{tblProfesorController.selected.idEstado}" title="#{bundle.EditTblProfesorTitle_idEstado}" >
+                        <f:selectItems value="#{tblEstadoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{tblProfesorController.update}" value="#{bundle.EditTblProfesorSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditTblProfesorViewLink}"/>
+                <br />
+                <h:commandLink action="#{tblProfesorController.prepareList}" value="#{bundle.EditTblProfesorShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditTblProfesorIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

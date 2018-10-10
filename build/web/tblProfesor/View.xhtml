@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="./../template/plantilla.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewTblProfesorTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="content">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewTblProfesorLabel_profesor}"/>
+                    <h:outputText value="#{tblProfesorController.selected.profesor}" title="#{bundle.ViewTblProfesorTitle_profesor}"/>
+                    <h:outputText value="#{bundle.ViewTblProfesorLabel_nombre}"/>
+                    <h:outputText value="#{tblProfesorController.selected.nombre}" title="#{bundle.ViewTblProfesorTitle_nombre}"/>
+                    <h:outputText value="#{bundle.ViewTblProfesorLabel_apellido}"/>
+                    <h:outputText value="#{tblProfesorController.selected.apellido}" title="#{bundle.ViewTblProfesorTitle_apellido}"/>
+                    <h:outputText value="#{bundle.ViewTblProfesorLabel_fechaNacimiento}"/>
+                    <h:outputText value="#{tblProfesorController.selected.fechaNacimiento}" title="#{bundle.ViewTblProfesorTitle_fechaNacimiento}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewTblProfesorLabel_docIdentificacion}"/>
+                    <h:outputText value="#{tblProfesorController.selected.docIdentificacion}" title="#{bundle.ViewTblProfesorTitle_docIdentificacion}"/>
+                    <h:outputText value="#{bundle.ViewTblProfesorLabel_telefono}"/>
+                    <h:outputText value="#{tblProfesorController.selected.telefono}" title="#{bundle.ViewTblProfesorTitle_telefono}"/>
+                    <h:outputText value="#{bundle.ViewTblProfesorLabel_correo}"/>
+                    <h:outputText value="#{tblProfesorController.selected.correo}" title="#{bundle.ViewTblProfesorTitle_correo}"/>
+                    <h:outputText value="#{bundle.ViewTblProfesorLabel_areaDocensia}"/>
+                    <h:outputText value="#{tblProfesorController.selected.areaDocensia}" title="#{bundle.ViewTblProfesorTitle_areaDocensia}"/>
+                    <h:outputText value="#{bundle.ViewTblProfesorLabel_idEstado}"/>
+                    <h:outputText value="#{tblProfesorController.selected.idEstado}" title="#{bundle.ViewTblProfesorTitle_idEstado}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{tblProfesorController.destroyAndView}" value="#{bundle.ViewTblProfesorDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewTblProfesorEditLink}"/>
+                <br />
+                <h:commandLink action="#{tblProfesorController.prepareCreate}" value="#{bundle.ViewTblProfesorCreateLink}" />
+                <br />
+                <h:commandLink action="#{tblProfesorController.prepareList}" value="#{bundle.ViewTblProfesorShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewTblProfesorIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

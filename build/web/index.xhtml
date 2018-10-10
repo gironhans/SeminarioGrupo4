@@ -2,37 +2,55 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:s="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
-        <style type="text/css">
-           body{
-                font-family: Verdana;       
-                padding: 10% 25% 10% 25%;
-                border: thin activeborder;    
-                font-family:Arial, sans-serif;
-                color:black;
-                font-size:15px;
-                line-height:14px;
-                padding-bottom:70px; 
-           }
-        </style>
-        <title>Seminario Grupo 4</title>
+        <title>AJUSTAR</title>
+        <h:outputStylesheet name="css/jsfcrud.css"/>
     </h:head>
     <h:body>
-        <h:form>
-            <center>
-                <p:messages autoUpdate="true" showDetail="true"/>
-                <p:panel header="Login" style="width:300px; text-align:center; ">
-                <p:outputLabel value="Ingrese Usuario:     "/>  
-                <p:inputText id="txtUser"/><br/><br/>
-                <p:outputLabel value="Ingrese Contraseña:  "/>  
-                <p:password id="txPass"/><br/><br/>
-                <p:commandButton id="cmdAceptar" value="Ingresar" icon="ui-icon-key" action="Menu.xhtml"/>
-            </p:panel>
-            </center>
-        </h:form>
+        <ui:composition template="/template/plantilla.xhtml">
+
+            <ui:define name="content">
+                BIENVENIDO
+            </ui:define>
+
+        </ui:composition>
+        <br />
+        <h:link outcome="/tblAlumno/List" value="Show All TblAlumno Items"/>
+        <br />
+        <h:link outcome="/tblAlumnoAsignacion/List" value="Show All TblAlumnoAsignacion Items"/>
+        <br />
+        <h:link outcome="/tblCentroEducativo/List" value="Show All TblCentroEducativo Items"/>
+        <br />
+        <h:link outcome="/tblEstado/List" value="Show All TblEstado Items"/>
+        <br />
+        <h:link outcome="/tblGradoEducativo/List" value="Show All TblGradoEducativo Items"/>
+        <br />
+        <h:link outcome="/tblMateria/List" value="Show All TblMateria Items"/>
+        <br />
+        <h:link outcome="/tblNivelEducativo/List" value="Show All TblNivelEducativo Items"/>
+        <br />
+        <h:link outcome="/tblProfesor/List" value="Show All TblProfesor Items"/>
+        <br />
+        <h:link outcome="/tblProfesorAsignacion/List" value="Show All TblProfesorAsignacion Items"/>
+        <br />
+        <h:link outcome="/tblSeccion/List" value="Show All TblSeccion Items"/>
+        <br />
+        <h:link outcome="/tblTareaTipo/List" value="Show All TblTareaTipo Items"/>
+        <br />
+        <h:link outcome="/tblUnidad/List" value="Show All TblUnidad Items"/>
     </h:body>
+
+
+
+
+
+
+
+
+
+
+
+
 </html>
 

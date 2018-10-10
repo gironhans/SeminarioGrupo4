@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="./../template/plantilla.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewTblProfesorAsignacionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="content">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewTblProfesorAsignacionLabel_idPAsignacion}"/>
+                    <h:outputText value="#{tblProfesorAsignacionController.selected.idPAsignacion}" title="#{bundle.ViewTblProfesorAsignacionTitle_idPAsignacion}"/>
+                    <h:outputText value="#{bundle.ViewTblProfesorAsignacionLabel_idGrado}"/>
+                    <h:outputText value="#{tblProfesorAsignacionController.selected.idGrado}" title="#{bundle.ViewTblProfesorAsignacionTitle_idGrado}"/>
+                    <h:outputText value="#{bundle.ViewTblProfesorAsignacionLabel_idMateria}"/>
+                    <h:outputText value="#{tblProfesorAsignacionController.selected.idMateria}" title="#{bundle.ViewTblProfesorAsignacionTitle_idMateria}"/>
+                    <h:outputText value="#{bundle.ViewTblProfesorAsignacionLabel_idProfesor}"/>
+                    <h:outputText value="#{tblProfesorAsignacionController.selected.idProfesor}" title="#{bundle.ViewTblProfesorAsignacionTitle_idProfesor}"/>
+                    <h:outputText value="#{bundle.ViewTblProfesorAsignacionLabel_idSeccion}"/>
+                    <h:outputText value="#{tblProfesorAsignacionController.selected.idSeccion}" title="#{bundle.ViewTblProfesorAsignacionTitle_idSeccion}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{tblProfesorAsignacionController.destroyAndView}" value="#{bundle.ViewTblProfesorAsignacionDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewTblProfesorAsignacionEditLink}"/>
+                <br />
+                <h:commandLink action="#{tblProfesorAsignacionController.prepareCreate}" value="#{bundle.ViewTblProfesorAsignacionCreateLink}" />
+                <br />
+                <h:commandLink action="#{tblProfesorAsignacionController.prepareList}" value="#{bundle.ViewTblProfesorAsignacionShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewTblProfesorAsignacionIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

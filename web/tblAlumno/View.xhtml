@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="./../template/plantilla.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewTblAlumnoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="content">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewTblAlumnoLabel_alumno}"/>
+                    <h:outputText value="#{tblAlumnoController.selected.alumno}" title="#{bundle.ViewTblAlumnoTitle_alumno}"/>
+                    <h:outputText value="#{bundle.ViewTblAlumnoLabel_nombre}"/>
+                    <h:outputText value="#{tblAlumnoController.selected.nombre}" title="#{bundle.ViewTblAlumnoTitle_nombre}"/>
+                    <h:outputText value="#{bundle.ViewTblAlumnoLabel_apellido}"/>
+                    <h:outputText value="#{tblAlumnoController.selected.apellido}" title="#{bundle.ViewTblAlumnoTitle_apellido}"/>
+                    <h:outputText value="#{bundle.ViewTblAlumnoLabel_fechaNacimiento}"/>
+                    <h:outputText value="#{tblAlumnoController.selected.fechaNacimiento}" title="#{bundle.ViewTblAlumnoTitle_fechaNacimiento}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewTblAlumnoLabel_nombreEncargado}"/>
+                    <h:outputText value="#{tblAlumnoController.selected.nombreEncargado}" title="#{bundle.ViewTblAlumnoTitle_nombreEncargado}"/>
+                    <h:outputText value="#{bundle.ViewTblAlumnoLabel_telefonoEncargado}"/>
+                    <h:outputText value="#{tblAlumnoController.selected.telefonoEncargado}" title="#{bundle.ViewTblAlumnoTitle_telefonoEncargado}"/>
+                    <h:outputText value="#{bundle.ViewTblAlumnoLabel_idCentroEducativo}"/>
+                    <h:outputText value="#{tblAlumnoController.selected.idCentroEducativo}" title="#{bundle.ViewTblAlumnoTitle_idCentroEducativo}"/>
+                    <h:outputText value="#{bundle.ViewTblAlumnoLabel_idEstado}"/>
+                    <h:outputText value="#{tblAlumnoController.selected.idEstado}" title="#{bundle.ViewTblAlumnoTitle_idEstado}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{tblAlumnoController.destroyAndView}" value="#{bundle.ViewTblAlumnoDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewTblAlumnoEditLink}"/>
+                <br />
+                <h:commandLink action="#{tblAlumnoController.prepareCreate}" value="#{bundle.ViewTblAlumnoCreateLink}" />
+                <br />
+                <h:commandLink action="#{tblAlumnoController.prepareList}" value="#{bundle.ViewTblAlumnoShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewTblAlumnoIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

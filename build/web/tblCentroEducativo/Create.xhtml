@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="./../template/plantilla.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateTblCentroEducativoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="content">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateTblCentroEducativoLabel_codigoDepartamental}" for="codigoDepartamental" />
+                    <h:inputText id="codigoDepartamental" value="#{tblCentroEducativoController.selected.codigoDepartamental}" title="#{bundle.CreateTblCentroEducativoTitle_codigoDepartamental}" />
+                    <h:outputLabel value="#{bundle.CreateTblCentroEducativoLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{tblCentroEducativoController.selected.nombre}" title="#{bundle.CreateTblCentroEducativoTitle_nombre}" />
+                    <h:outputLabel value="#{bundle.CreateTblCentroEducativoLabel_direccion}" for="direccion" />
+                    <h:inputText id="direccion" value="#{tblCentroEducativoController.selected.direccion}" title="#{bundle.CreateTblCentroEducativoTitle_direccion}" />
+                    <h:outputLabel value="#{bundle.CreateTblCentroEducativoLabel_telefono}" for="telefono" />
+                    <h:inputText id="telefono" value="#{tblCentroEducativoController.selected.telefono}" title="#{bundle.CreateTblCentroEducativoTitle_telefono}" />
+                    <h:outputLabel value="#{bundle.CreateTblCentroEducativoLabel_correo}" for="correo" />
+                    <h:inputText id="correo" value="#{tblCentroEducativoController.selected.correo}" title="#{bundle.CreateTblCentroEducativoTitle_correo}" />
+                    <h:outputLabel value="#{bundle.CreateTblCentroEducativoLabel_administradorEscuela}" for="administradorEscuela" />
+                    <h:inputText id="administradorEscuela" value="#{tblCentroEducativoController.selected.administradorEscuela}" title="#{bundle.CreateTblCentroEducativoTitle_administradorEscuela}" />
+                    <h:outputLabel value="#{bundle.CreateTblCentroEducativoLabel_cargo}" for="cargo" />
+                    <h:inputText id="cargo" value="#{tblCentroEducativoController.selected.cargo}" title="#{bundle.CreateTblCentroEducativoTitle_cargo}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{tblCentroEducativoController.create}" value="#{bundle.CreateTblCentroEducativoSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{tblCentroEducativoController.prepareList}" value="#{bundle.CreateTblCentroEducativoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateTblCentroEducativoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

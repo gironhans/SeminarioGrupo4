@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditTblNotaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="content">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditTblNotaLabel_nota}" for="nota" />
+                    <h:inputText id="nota" value="#{tblNotaController.selected.nota}" title="#{bundle.EditTblNotaTitle_nota}" required="true" requiredMessage="#{bundle.EditTblNotaRequiredMessage_nota}"/>
+                    <h:outputLabel value="#{bundle.EditTblNotaLabel_observacion}" for="observacion" />
+                    <h:inputText id="observacion" value="#{tblNotaController.selected.observacion}" title="#{bundle.EditTblNotaTitle_observacion}" />
+                    <h:outputLabel value="#{bundle.EditTblNotaLabel_idYyyy}" for="idYyyy" />
+                    <h:selectOneMenu id="idYyyy" value="#{tblNotaController.selected.idYyyy}" title="#{bundle.EditTblNotaTitle_idYyyy}" required="true" requiredMessage="#{bundle.EditTblNotaRequiredMessage_idYyyy}">
+                        <f:selectItems value="#{tblYyyyController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditTblNotaLabel_idAlumno}" for="idAlumno" />
+                    <h:selectOneMenu id="idAlumno" value="#{tblNotaController.selected.idAlumno}" title="#{bundle.EditTblNotaTitle_idAlumno}" >
+                        <f:selectItems value="#{tblAlumnoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditTblNotaLabel_idTarea}" for="idTarea" />
+                    <h:selectOneMenu id="idTarea" value="#{tblNotaController.selected.idTarea}" title="#{bundle.EditTblNotaTitle_idTarea}" >
+                        <f:selectItems value="#{tblTareaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{tblNotaController.update}" value="#{bundle.EditTblNotaSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditTblNotaViewLink}"/>
+                <br />
+                <h:commandLink action="#{tblNotaController.prepareList}" value="#{bundle.EditTblNotaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditTblNotaIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

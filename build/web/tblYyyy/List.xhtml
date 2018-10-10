@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListTblYyyyTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="content">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListTblYyyyEmpty}" rendered="#{tblYyyyController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{tblYyyyController.items.rowCount > 0}">
+                    <h:outputText value="#{tblYyyyController.pagination.pageFirstItem + 1}..#{tblYyyyController.pagination.pageLastItem + 1}/#{tblYyyyController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{tblYyyyController.previous}" value="#{bundle.Previous} #{tblYyyyController.pagination.pageSize}" rendered="#{tblYyyyController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{tblYyyyController.next}" value="#{bundle.Next} #{tblYyyyController.pagination.pageSize}" rendered="#{tblYyyyController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{tblYyyyController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTblYyyyTitle_yyyy}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.yyyy}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTblYyyyTitle_anual}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.anual}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTblYyyyTitle_sleccion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.sleccion}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{tblYyyyController.prepareView}" value="#{bundle.ListTblYyyyViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{tblYyyyController.prepareEdit}" value="#{bundle.ListTblYyyyEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{tblYyyyController.destroy}" value="#{bundle.ListTblYyyyDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{tblYyyyController.prepareCreate}" value="#{bundle.ListTblYyyyCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListTblYyyyIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

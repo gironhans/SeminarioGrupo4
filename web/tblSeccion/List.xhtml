@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="./../template/plantilla.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListTblSeccionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="content">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListTblSeccionEmpty}" rendered="#{tblSeccionController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{tblSeccionController.items.rowCount > 0}">
+                    <h:outputText value="#{tblSeccionController.pagination.pageFirstItem + 1}..#{tblSeccionController.pagination.pageLastItem + 1}/#{tblSeccionController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{tblSeccionController.previous}" value="#{bundle.Previous} #{tblSeccionController.pagination.pageSize}" rendered="#{tblSeccionController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{tblSeccionController.next}" value="#{bundle.Next} #{tblSeccionController.pagination.pageSize}" rendered="#{tblSeccionController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{tblSeccionController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTblSeccionTitle_seccion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.seccion}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTblSeccionTitle_literal}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.literal}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{tblSeccionController.prepareView}" value="#{bundle.ListTblSeccionViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{tblSeccionController.prepareEdit}" value="#{bundle.ListTblSeccionEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{tblSeccionController.destroy}" value="#{bundle.ListTblSeccionDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{tblSeccionController.prepareCreate}" value="#{bundle.ListTblSeccionCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListTblSeccionIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

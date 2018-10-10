@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="./../template/plantilla.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditTblTareaTipoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="content">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditTblTareaTipoLabel_tareaTipo}" for="tareaTipo" />
+                    <h:inputText id="tareaTipo" value="#{tblTareaTipoController.selected.tareaTipo}" title="#{bundle.EditTblTareaTipoTitle_tareaTipo}" required="true" requiredMessage="#{bundle.EditTblTareaTipoRequiredMessage_tareaTipo}"/>
+                    <h:outputLabel value="#{bundle.EditTblTareaTipoLabel_descripcion}" for="descripcion" />
+                    <h:inputText id="descripcion" value="#{tblTareaTipoController.selected.descripcion}" title="#{bundle.EditTblTareaTipoTitle_descripcion}" />
+                    <h:outputLabel value="#{bundle.EditTblTareaTipoLabel_observacion}" for="observacion" />
+                    <h:inputText id="observacion" value="#{tblTareaTipoController.selected.observacion}" title="#{bundle.EditTblTareaTipoTitle_observacion}" />
+                </h:panelGrid>
+                <h:commandLink action="#{tblTareaTipoController.update}" value="#{bundle.EditTblTareaTipoSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditTblTareaTipoViewLink}"/>
+                <br />
+                <h:commandLink action="#{tblTareaTipoController.prepareList}" value="#{bundle.EditTblTareaTipoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditTblTareaTipoIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

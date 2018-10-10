@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateTblTareaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="content">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateTblTareaLabel_tarea}" for="tarea" />
+                    <h:inputText id="tarea" value="#{tblTareaController.selected.tarea}" title="#{bundle.CreateTblTareaTitle_tarea}" required="true" requiredMessage="#{bundle.CreateTblTareaRequiredMessage_tarea}"/>
+                    <h:outputLabel value="#{bundle.CreateTblTareaLabel_observacion}" for="observacion" />
+                    <h:inputText id="observacion" value="#{tblTareaController.selected.observacion}" title="#{bundle.CreateTblTareaTitle_observacion}" />
+                    <h:outputLabel value="#{bundle.CreateTblTareaLabel_idGradoEducativo}" for="idGradoEducativo" />
+                    <h:selectOneMenu id="idGradoEducativo" value="#{tblTareaController.selected.idGradoEducativo}" title="#{bundle.CreateTblTareaTitle_idGradoEducativo}" >
+                        <f:selectItems value="#{tblGradoEducativoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateTblTareaLabel_idMateria}" for="idMateria" />
+                    <h:selectOneMenu id="idMateria" value="#{tblTareaController.selected.idMateria}" title="#{bundle.CreateTblTareaTitle_idMateria}" >
+                        <f:selectItems value="#{tblMateriaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateTblTareaLabel_idSeccion}" for="idSeccion" />
+                    <h:selectOneMenu id="idSeccion" value="#{tblTareaController.selected.idSeccion}" title="#{bundle.CreateTblTareaTitle_idSeccion}" >
+                        <f:selectItems value="#{tblSeccionController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateTblTareaLabel_idTipoTarea}" for="idTipoTarea" />
+                    <h:selectOneMenu id="idTipoTarea" value="#{tblTareaController.selected.idTipoTarea}" title="#{bundle.CreateTblTareaTitle_idTipoTarea}" >
+                        <f:selectItems value="#{tblTareaTipoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateTblTareaLabel_idUnidad}" for="idUnidad" />
+                    <h:selectOneMenu id="idUnidad" value="#{tblTareaController.selected.idUnidad}" title="#{bundle.CreateTblTareaTitle_idUnidad}" >
+                        <f:selectItems value="#{tblUnidadController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{tblTareaController.create}" value="#{bundle.CreateTblTareaSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{tblTareaController.prepareList}" value="#{bundle.CreateTblTareaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateTblTareaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="./../template/plantilla.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewTblAlumnoAsignacionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="content">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewTblAlumnoAsignacionLabel_idAAsignacion}"/>
+                    <h:outputText value="#{tblAlumnoAsignacionController.selected.idAAsignacion}" title="#{bundle.ViewTblAlumnoAsignacionTitle_idAAsignacion}"/>
+                    <h:outputText value="#{bundle.ViewTblAlumnoAsignacionLabel_idAlumno}"/>
+                    <h:outputText value="#{tblAlumnoAsignacionController.selected.idAlumno}" title="#{bundle.ViewTblAlumnoAsignacionTitle_idAlumno}"/>
+                    <h:outputText value="#{bundle.ViewTblAlumnoAsignacionLabel_idGrado}"/>
+                    <h:outputText value="#{tblAlumnoAsignacionController.selected.idGrado}" title="#{bundle.ViewTblAlumnoAsignacionTitle_idGrado}"/>
+                    <h:outputText value="#{bundle.ViewTblAlumnoAsignacionLabel_idSeccion}"/>
+                    <h:outputText value="#{tblAlumnoAsignacionController.selected.idSeccion}" title="#{bundle.ViewTblAlumnoAsignacionTitle_idSeccion}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{tblAlumnoAsignacionController.destroyAndView}" value="#{bundle.ViewTblAlumnoAsignacionDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewTblAlumnoAsignacionEditLink}"/>
+                <br />
+                <h:commandLink action="#{tblAlumnoAsignacionController.prepareCreate}" value="#{bundle.ViewTblAlumnoAsignacionCreateLink}" />
+                <br />
+                <h:commandLink action="#{tblAlumnoAsignacionController.prepareList}" value="#{bundle.ViewTblAlumnoAsignacionShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewTblAlumnoAsignacionIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="./../template/plantilla.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditTblAlumnoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="content">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditTblAlumnoLabel_alumno}" for="alumno" />
+                    <h:inputText id="alumno" value="#{tblAlumnoController.selected.alumno}" title="#{bundle.EditTblAlumnoTitle_alumno}" required="true" requiredMessage="#{bundle.EditTblAlumnoRequiredMessage_alumno}"/>
+                    <h:outputLabel value="#{bundle.EditTblAlumnoLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{tblAlumnoController.selected.nombre}" title="#{bundle.EditTblAlumnoTitle_nombre}" />
+                    <h:outputLabel value="#{bundle.EditTblAlumnoLabel_apellido}" for="apellido" />
+                    <h:inputText id="apellido" value="#{tblAlumnoController.selected.apellido}" title="#{bundle.EditTblAlumnoTitle_apellido}" />
+                    <h:outputLabel value="#{bundle.EditTblAlumnoLabel_fechaNacimiento}" for="fechaNacimiento" />
+                    <h:inputText id="fechaNacimiento" value="#{tblAlumnoController.selected.fechaNacimiento}" title="#{bundle.EditTblAlumnoTitle_fechaNacimiento}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditTblAlumnoLabel_nombreEncargado}" for="nombreEncargado" />
+                    <h:inputText id="nombreEncargado" value="#{tblAlumnoController.selected.nombreEncargado}" title="#{bundle.EditTblAlumnoTitle_nombreEncargado}" />
+                    <h:outputLabel value="#{bundle.EditTblAlumnoLabel_telefonoEncargado}" for="telefonoEncargado" />
+                    <h:inputText id="telefonoEncargado" value="#{tblAlumnoController.selected.telefonoEncargado}" title="#{bundle.EditTblAlumnoTitle_telefonoEncargado}" />
+                    <h:outputLabel value="#{bundle.EditTblAlumnoLabel_idCentroEducativo}" for="idCentroEducativo" />
+                    <h:selectOneMenu id="idCentroEducativo" value="#{tblAlumnoController.selected.idCentroEducativo}" title="#{bundle.EditTblAlumnoTitle_idCentroEducativo}" >
+                        <f:selectItems value="#{tblCentroEducativoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditTblAlumnoLabel_idEstado}" for="idEstado" />
+                    <h:selectOneMenu id="idEstado" value="#{tblAlumnoController.selected.idEstado}" title="#{bundle.EditTblAlumnoTitle_idEstado}" >
+                        <f:selectItems value="#{tblEstadoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{tblAlumnoController.update}" value="#{bundle.EditTblAlumnoSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditTblAlumnoViewLink}"/>
+                <br />
+                <h:commandLink action="#{tblAlumnoController.prepareList}" value="#{bundle.EditTblAlumnoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditTblAlumnoIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

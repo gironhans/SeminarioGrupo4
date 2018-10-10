@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="./../template/plantilla.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListTblGradoEducativoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="content">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListTblGradoEducativoEmpty}" rendered="#{tblGradoEducativoController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{tblGradoEducativoController.items.rowCount > 0}">
+                    <h:outputText value="#{tblGradoEducativoController.pagination.pageFirstItem + 1}..#{tblGradoEducativoController.pagination.pageLastItem + 1}/#{tblGradoEducativoController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{tblGradoEducativoController.previous}" value="#{bundle.Previous} #{tblGradoEducativoController.pagination.pageSize}" rendered="#{tblGradoEducativoController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{tblGradoEducativoController.next}" value="#{bundle.Next} #{tblGradoEducativoController.pagination.pageSize}" rendered="#{tblGradoEducativoController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{tblGradoEducativoController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTblGradoEducativoTitle_gradoEducativo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.gradoEducativo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTblGradoEducativoTitle_nombre}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombre}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTblGradoEducativoTitle_descripcion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.descripcion}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTblGradoEducativoTitle_idNivelEducativo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idNivelEducativo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{tblGradoEducativoController.prepareView}" value="#{bundle.ListTblGradoEducativoViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{tblGradoEducativoController.prepareEdit}" value="#{bundle.ListTblGradoEducativoEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{tblGradoEducativoController.destroy}" value="#{bundle.ListTblGradoEducativoDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{tblGradoEducativoController.prepareCreate}" value="#{bundle.ListTblGradoEducativoCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListTblGradoEducativoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

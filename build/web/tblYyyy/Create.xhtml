@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateTblYyyyTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="content">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateTblYyyyLabel_yyyy}" for="yyyy" />
+                    <h:inputText id="yyyy" value="#{tblYyyyController.selected.yyyy}" title="#{bundle.CreateTblYyyyTitle_yyyy}" required="true" requiredMessage="#{bundle.CreateTblYyyyRequiredMessage_yyyy}"/>
+                    <h:outputLabel value="#{bundle.CreateTblYyyyLabel_anual}" for="anual" />
+                    <h:inputText id="anual" value="#{tblYyyyController.selected.anual}" title="#{bundle.CreateTblYyyyTitle_anual}" required="true" requiredMessage="#{bundle.CreateTblYyyyRequiredMessage_anual}"/>
+                    <h:outputLabel value="#{bundle.CreateTblYyyyLabel_sleccion}" for="sleccion" />
+                    <h:inputText id="sleccion" value="#{tblYyyyController.selected.sleccion}" title="#{bundle.CreateTblYyyyTitle_sleccion}" required="true" requiredMessage="#{bundle.CreateTblYyyyRequiredMessage_sleccion}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{tblYyyyController.create}" value="#{bundle.CreateTblYyyySaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{tblYyyyController.prepareList}" value="#{bundle.CreateTblYyyyShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateTblYyyyIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
